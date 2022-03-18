@@ -5,22 +5,37 @@ const typeDefs = gql`
     type User {
         # these tags are case sensitive so it should be same in databasetoo.
         id: ID!
-        name: Names!
+        name: String!
         email: String!
-        age: Int!
+        age: Int
         friend: [User]
+        favoriteMovie: [Movie]  
     }
 
+    # //* this is GET request
     type Query {
         users: [User!]!
         user(id: ID!): User
+        movies: [Movie!]!
+        movie(name: String!): Movie 
     }
-    
-    # creating enum type called Names
-    enum Names {
-        John
-        Abhay   
-        Jane
+
+    type Movie {
+        id: ID!
+        name: String!
+        yearOfPublication: Int!
+        isCinema: Boolean!
+    }
+
+    input createUserInput {
+        name: String!
+        email: String!
+        age: Int
+    }
+    # //? Every GraphQL data which should add, alterdata, delete, etc should be a TYPE mutation
+    type Mutation {
+        # adding new user
+        createUser(input: createUserInput): User
     }
  `
 

@@ -30,7 +30,20 @@ const userData = [
                 "email": "janadoe@gmail.com",
                 "age": 25,
             },
-        ]
+        ],
+        "favoriteMovie": [
+            {
+                "id": "1",
+                "name": "The Shawshank Redemption",
+                "yearOfPublication": 1994,
+                "isCinema": true
+            },
+            {
+                "id": "2",
+                "name": "The Godfather",
+                "yearOfPublication": 1972,
+                "isCinema": true
+            },]
     },
     {
         "id": "3",
