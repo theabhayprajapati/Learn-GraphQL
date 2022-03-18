@@ -1,3 +1,4 @@
+// ? getting data from these two files...
 const { userData } = require('../fakedata')
 const { movieData } = require('../fakemovies')
 const resolvers = {
@@ -33,22 +34,29 @@ const resolvers = {
         }
     },
 
-    // mutation
+    // ?Mutation Type
     Mutation: {
-        // ?createUser resolvers
         createUser: (parent, args) => {
-            console.log('args', args)
-            const newUser = {
-                id: '6',
-                name: args.input.name,
-                email: args.input.email,
-                age: args.input.age,
-            }
-            userData.push(newUser)
-            return newUser
-        }
-    }
-}
+            console.log('args', args);
+            const user = args.input
+            user.id = userData.length + 1
+            userData.push(user)
+            return user
+        },
+        updateUsername: (parent, args) => {
+            console.log('args', args);
+            const user = userData.find(user => user.id === args.input.id ? user.name = args.input.name : console.log('notfound'));
+            console.log(user);
 
+            return user
+        },
+        deleteUser: (parent, args) => {
+            console.log('args', args)
+            const user = userData.find(user => user.id === args.id ? userData.splice(userData.indexOf(user), 1) : console.log('notfound'));
+            console.log(user);
+            return user
+        }
+    },
+}
 // exprot
 module.exports = { resolvers }

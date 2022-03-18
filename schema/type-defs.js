@@ -1,5 +1,7 @@
+// ? 3: gql is required for making schema's.
 const { gql } = require('apollo-server')
-
+//! what is typeDefs:
+// * A schema is a collection of type definitions (hence the typeDefs) / schema is a structure of data and it's types.
 const typeDefs = gql`
     # creating type called User
     type User {
@@ -26,16 +28,21 @@ const typeDefs = gql`
         yearOfPublication: Int!
         isCinema: Boolean!
     }
-
+    # //? Doing mutation here
+    # //? Mutation is REST is POST request.
     input createUserInput {
         name: String!
         email: String!
         age: Int
     }
-    # //? Every GraphQL data which should add, alterdata, delete, etc should be a TYPE mutation
+    input updateUserInput{
+        id: ID!
+        name: String!
+    }
     type Mutation {
-        # adding new user
         createUser(input: createUserInput): User
+        updateUsername(input: updateUserInput): User
+        deleteUser(id: ID!): User
     }
  `
 
