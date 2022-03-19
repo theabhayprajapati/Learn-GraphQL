@@ -15,7 +15,7 @@ const { resolvers } = require('./schema/resolvers');
 // * 2. resolvers: the resolvers is the data that is being returned, when we request the data from the server.
 // ? so we imported this form other files, just fot neatness, we can import it from other files.
 // ? but can could do all the same thing in this file.
-// todo: Move after reading/ and understaning this here more to Types Def file.
+// todo: Move after reading/ and understaning this here more to lsTypes Def file.
 const server = new ApolloServer({ typeDefs, resolvers })
 
 
